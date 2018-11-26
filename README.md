@@ -11,8 +11,8 @@
 * Docker
 
 
-## Project setup (with codebase)
-### 1.Clone codebase from and entry there
+## Project setup with codebase.
+### 1. Clone codebase from and entry there.
 
 ### 2. Build container:
 ```$ docker-compose build```
@@ -21,10 +21,10 @@
 ```$ docker-compose up```
 
 
-## Project setup
+## Project setup.
 
 
-### 1. Create *Django* project 
+### 1.1 Create *Django* project: 
 ``` $ django-admin startproject project```  for this command you need Django2 already installed on your host machine
 
 **project** - you can use any another name for your project
@@ -47,7 +47,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
 ```
 
-### 1.5 Setup *database*:
+### 1.4 Setup *database*:
 Go to **project/project/setting.py** and replace code block```# Database``` by code below: 
 
 ```
@@ -63,7 +63,7 @@ DATABASES = {
 }
 ```
 
-### 1.6 add allowed_hosts
+### 1.5 Add allowed hosts to *Django* settings:
 Go to **project/project/setting.py** and set ```ALLOWED_HOSTS = ['0.0.0.0']``` (add your host):
 
 
@@ -89,7 +89,7 @@ psycopg2-binary = "*"
 python_version = "3.6"
 ```
 
-### 2.2 Install *Pipenv* to your host machine and generate *Pipfile.lock*
+### 2.2 Install *Pipenv* to your host machine and generate *Pipfile.lock*:
 ```$ pip install pipenv```
 
 ```$ pipenv lock```
@@ -221,13 +221,13 @@ volumes:
   media_volume:
 ```
 
-### 7. Create image 
-```$ docker-compose build ```
+### 7. Create image: 
+```$ docker-compose build```
 
-### 8. Run migrations
+### 8. Run migrations:
 ```$ docker-compose run web bash -c "cd project; python manage.py migrate"```
 
-### 9. Start app
+### 9. Start app:
 ```$ docker-compose up```
 
 Based on: http://pawamoy.github.io/2018/02/01/docker-compose-django-postgres-nginx.html
