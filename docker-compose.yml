@@ -1,0 +1,48 @@
+version: '3'
+
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/code/
+      - ./volumes/static_volume:/code/project/static
+      - ./volumes/media_volume:/code/project/media
+    networks:
+      - nginx_network
+      - db_network
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:1.13
+    ports:
+      - 8000:80
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - ./volumes/static_volume:/code/project/static
+      - ./volumes/media_volume:/code/project/media
+    depends_on:
+      - web
+    networks:
+      - nginx_network
+
+  db:
+    image: postgres:10
+    env_file:
+      - ./config/db/db_env
+    networks:
+      - db_network
+    volumes:
+      - ./volumes/db_volume:/var/lib/postgresql/data
+
+networks:
+  nginx_network:
+    driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  db_volume:
+  static_volume:
+  media_volume:

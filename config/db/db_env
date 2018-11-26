@@ -1,0 +1,5 @@
+# Use this data when create db
+# More variables here https://hub.docker.com/_/postgres/
+POSTGRES_USER=database1_role
+POSTGRES_PASSWORD=database1_password
+POSTGRES_DB=database1
