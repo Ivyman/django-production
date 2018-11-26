@@ -223,10 +223,11 @@ volumes:
 
 ### 7. Create image 
 ```$ docker-compose build ```
-### 8. docker-compose run --rm djangoapp bash
-python manage.py migrate
 
-### 9. 
-```$ docker-compose run --rm djangoapp bash```
+### 8. Run migrations
+```$ docker-compose run web bash -c "cd project; python manage.py migrate"```
+
+### 9. Start app
+```$ docker-compose up```
 
 Based on: http://pawamoy.github.io/2018/02/01/docker-compose-django-postgres-nginx.html
